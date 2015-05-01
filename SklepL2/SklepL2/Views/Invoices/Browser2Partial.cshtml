@@ -1,0 +1,93 @@
+﻿@model IEnumerable<SklepL2.ViewModel.FindResultViewModel>
+
+@*
+@model DateTime
+*@
+
+@{
+    Layout = null;
+}
+
+@*
+<tr>
+    <td>
+        bieżący czas: @Model.ToShortTimeString()
+    </td>
+</tr>
+*@
+
+@*
+    @model IEnumerable<SklepL2.ViewModel.FindResultViewModel>
+*@
+
+@*
+    @model IEnumerable<SklepL2.Models.Invoice>
+    <table class="table">
+*@
+
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceNumber)
+        </th>
+       <th>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model =>  model.TotalAmount)
+        </th>
+
+        <th></th>
+    </tr>
+
+
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmount)
+            </td>
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Invoice_ID }, new { id="EditLinkID",invoiceID=item.Invoice_ID }) |*@
+                @*@Html.ActionLink("Edit", "Edit", routeValues: new { invoiceId = item.Invoice_ID }, htmlAttributes: new { @id = "linkSet", onclick = "getInvoice" })*@
+
+                <span id="InvoiceEdit" invoiceid=item.Invoice_ID >Edit</span>
+                      @Html.ActionLink("Details", "Details", new { id = item.Invoice_ID }) |
+                      @Html.ActionLink("Delete", "Delete", new { id = item.Invoice_ID })
+            </td>
+        </tr>
+    }
+
+@*</table>*@
+@section scripts {
+    <script>
+            //function getInvoice(e) {
+            //    e.preventDefault();
+            //    alert('Lubimy optymistów')
+            //}
+
+        $('#InvoiceEdit').click(function () {
+                alert('Lubimy optymistów');
+                //$.get("/Faktury/Search?q=" + $("#txtSearchValue").val(),
+                //    function (data) {
+                //    //location.reload(true);
+                //    $("#dvResults").reset;
+                //    $("#dvResults").replaceWith(data);
+                //});
+            });
+    </script>
+}

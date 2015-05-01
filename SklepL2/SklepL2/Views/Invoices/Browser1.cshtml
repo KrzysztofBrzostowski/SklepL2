@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Wyszukiwarka";
+}
+
+<h2>Wyszukiwarka</h2>
+<div>
+    <span>Invoice search</span>
+    <div>
+        <div>Invoice number</div>
+        <input type="text" id="txtSearchValue" /><br />
+        <button id="btSearch">Search</button>
+        <a href="">New</a>
+    </div>
+</div>
+<hr />
+<div id="dvResults" />
+
+@*
+        location.reload(true);
+        $("#dvResults").reset;
+    <button>load about</button>
+    <script type="text/javascript">
+        $("button").click(function () {
+
+            $("#mainDiv").load("Test/Page2");
+        });
+    </script>
+*@
+
+@section scripts {
+    <script>
+    $(document).ready(function () {
+        $("#btSearch").click(function () {
+            $.get("/Faktury/Browser2Partial?arg=" + $("#txtSearchValue").val(), function (data) {
+                $("#dvResults").replaceWith(data);
+            });
+        });
+    });
+    </script>
+}

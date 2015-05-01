@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+    AjaxOptions ajaxOpts = new AjaxOptions
+    {
+        UpdateTargetId = "Browser2_OutputData"
+    };
+}
+<hr />
+<!--<div class="list-group-item-heading">-->
+<div>
+    @using (Ajax.BeginForm("Browser2Partial", ajaxOpts))
+    {
+        <div class="form-group">
+            <div>Invoices Browser</div>
+            <input type="text" id="txtBrowser2Value" name="arg" class="control" /> <br />
+            <!-- <button id="btSearch">Search</button>
+                class = "control-label col-md-2"
+                class = "form-control" 
+             -->
+            <input type="submit" id="btBrowser2" />  <a href="">New</a> <br />
+        </div>
+    }
+</div>
+
+<hr />
+<div>
+    <span id="ABC_ID" >Nazwa i szczególy Faktury</span>
+    <span>Search Result</span>
+    <table>
+        <tbody id="Browser2_OutputData"></tbody>
+    </table>
+</div>
+<hr />
+
+<div id="InvoicePanel"/>
